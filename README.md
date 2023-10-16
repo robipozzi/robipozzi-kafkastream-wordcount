@@ -209,7 +209,7 @@ KStream<String, String> source = builder.stream(plainTextKafkaTopic);
 
 The above code creates a **KStream** instance called *source*, bound to *streams-plaintext-input* Kafka topic: the data published to that topic are interpreted as a record stream and several transformations can then be applied to it, using Kafka Streams DSL constructs.
 
-* **Pipe**
+* **Pipe** scenario
 
 Pipe just takes records from *source* **KStream** instantiated above and publish message to another topic, see code snippet below
  
@@ -220,7 +220,7 @@ source.to(pipeOutputKafkaTopic);
 // =============== PIPE - END ===============
 ```
 
-* **Split Line**
+* **Split Line** scenario
 
 In this second scenario, as it can be seen in the code snippet below, sentences coming in as messages to the *streams-plaintext-input* input Kafka topic are split into words, via **Arrays.asList(value.split("\\W+"))** method. The **flatMapValues** Kafka Streams stateless transformation is then applied.
 
@@ -240,7 +240,7 @@ words.to(lineSplitKafkaTopic);
 // =============== LINE SPLIT - END ===============
 ```
 
-* **Word Count**
+* **Word Count** scenario
 
 In this third scenario, several transformations are applied sequentially to count each word occurence, as implemented in the code snippet below
 
