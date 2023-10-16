@@ -61,7 +61,7 @@ cd $HOME/dev/robipozzi-kafka/samples/streams-wordcount
 ./start-producer.sh
 ```
 
-* **[start-consumer.sh](https://github.com/robipozzi/robipozzi-kafka/blob/main/samples/streams-wordcount/start-consumer.sh)** runs a specific Kafka consumer, with **value.deserializer** set to non default **org.apache.kafka.common.serialization.LongDeserializer** to allow reading from *streams-wordcount-output* Kafka topic where words count will be produced by the application. Open a new terminal and run the following commands to start the Kafka producer
+* **[start-consumer.sh](https://github.com/robipozzi/robipozzi-kafka/blob/main/samples/streams-wordcount/start-consumer.sh)** runs a specific Kafka consumer, with **value.deserializer** set to non default **org.apache.kafka.common.serialization.LongDeserializer** to allow reading from *streams-wordcount-output* Kafka topic where words count will be produced by the application. Open a new terminal and run the following commands to start the Kafka consumer
 
 ```
 cd $HOME/dev/robipozzi-kafka/samples/streams-wordcount
