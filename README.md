@@ -26,7 +26,7 @@ git clone https://github.com/robipozzi/robipozzi-kafkastreams-wordcount
 ```
 
 ## Setup and run Kafka
-To see how a Kafka producer works, you will need to setup a few things in advance, such as a Kafka cluster to interact with and Kafka topic to produce and consume messages; also it could be useful to have some Kafka consumers to test the messages have been correctly produced by our Kafka producer: everything is 
+To see how a Kafka Streams works, reading what Kafka producers published to some input topic and publish the result of a chain of transformation to an ouput topic, you will need to setup a few things in advance, such as a Kafka cluster to interact with and Kafka topics to produce and consume messages; also it could be useful to have some Kafka consumers to test that the messages have been correctly produced by our Kafka Streams application: everything is 
 already described in details in this GitHub repository https://github.com/robipozzi/robipozzi-kafka, you will find pointers to the appropriate content in the 
 paragraphs below.
 
