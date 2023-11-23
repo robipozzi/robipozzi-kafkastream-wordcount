@@ -54,7 +54,7 @@ public class WordCountStreamsService {
 		props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServers);
 		props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 		props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
-		/* ==== TODO - ENABLE SSL ==== */
+		/* ==== If SSL is enabled, set SSL properties ==== */
 		if (securityProtocol.equals(WordCountStreamsService.SSL_SECURITY_PROTOCOL)) {
 			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, securityProtocol);
 			props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, truststore);
