@@ -1,2 +1,2 @@
 eclipse.preferences.version=1
-spring.boot.launch.profile.history=confluent;
+spring.boot.launch.profile.history=ssl;confluent;

@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Locale;
 import java.util.Properties;
 import java.util.concurrent.CountDownLatch;
+import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.common.config.SslConfigs;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.common.utils.Bytes;
 import org.apache.kafka.streams.KafkaStreams;
@@ -22,6 +24,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class WordCountStreamsService {
 	private static final Logger logger = LoggerFactory.getLogger(WordCountStreamsService.class);
+	private static final String SSL_SECURITY_PROTOCOL = "SSL";
 	@Value(value = "${spring.kafka.bootstrap-servers}")
 	private String kafkaBootstrapServers;
 	@Value(value = "${kafkastreams.application.id}")
@@ -34,6 +37,13 @@ public class WordCountStreamsService {
 	private String lineSplitKafkaTopic;
 	@Value(value = "${kafka.topic.wordcountoutput}")
 	private String wordCountKafkaTopic;
+	// SSL configuration properties
+	@Value(value = "${spring.kafka.security.protocol}")
+	private String securityProtocol;
+	@Value(value = "${spring.kafka.ssl.trust-store-location}")
+	private String truststore;
+	@Value(value = "${spring.kafka.ssl.trust-store-password}")
+	private String truststorePassword;
 
 	public void process() {
 		// ########################################################################
@@ -44,6 +54,12 @@ public class WordCountStreamsService {
 		props.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaBootstrapServers);
 		props.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass());
 		props.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass());
+		/* ==== TODO - ENABLE SSL ==== */
+		if (securityProtocol.equals(WordCountStreamsService.SSL_SECURITY_PROTOCOL)) {
+			props.put(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, securityProtocol);
+			props.put(SslConfigs.SSL_TRUSTSTORE_LOCATION_CONFIG, truststore);
+			props.put(SslConfigs.SSL_TRUSTSTORE_PASSWORD_CONFIG, truststorePassword);
+		}
 
 		// Since each of the source stream's record is a String typed key-value pair,
 		// let's treat the value string as a text line and split it into words with a FlatMapValues operator
