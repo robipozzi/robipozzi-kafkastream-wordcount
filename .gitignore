@@ -1,3 +1,2 @@
 /target/
 src/main/resources/application-confluent.properties
-src/main/resources/application-ssl.properties
