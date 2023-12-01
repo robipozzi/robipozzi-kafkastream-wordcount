@@ -6,6 +6,7 @@ MAVEN_GOAL_OPTION=$1
 MAVEN_GOAL=
 ##### Variable section - END
 
+
 main()
 {
 	if [ -z $MAVEN_GOAL_OPTION ]; then 
