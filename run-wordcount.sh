@@ -3,7 +3,7 @@ source ./setenv.sh $1 $2
 ##### Variable section - START
 SCRIPT=run-wordcount.sh
 DEFAULT_TRUSTSTORE=$HOME/opt/robipozzi-kafka/ssl/kafka.client.truststore.jks
-JAR_NAME=robipozzi-kafkastream-wordcount
+JAR_NAME=robipozzi-kafkastreams-wordcount
 VERSION=0.0.1-SNAPSHOT
 ##### Variable section - END
 
